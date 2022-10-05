@@ -263,6 +263,8 @@ Requête DNS :
 Réponse :
 ![](https://i.imgur.com/tjJxePT.png)
 
+## 2. Bonus : avant-goût TCP et UDP
+
 🌞 Wireshark it:
 
 ![](https://i.imgur.com/gJ3p9nr.png)
