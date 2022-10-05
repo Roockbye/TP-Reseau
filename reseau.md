@@ -47,7 +47,85 @@ je n'ai pas pu faire la suite car port RJ45 cassé (suite partie à 2, compte-re
 # 4. Utilisation d'un des deux comme gateway
 
 🌞Tester l'accès internet
+```ping 1.1.1.1```
 
+```
+Envoi d’une requête 'Ping'  1.1.1.1 avec 32 octets de données :
+Réponse de 1.1.1.1 : octets=32 temps=24 ms TTL=54
+Réponse de 1.1.1.1 : octets=32 temps=34 ms TTL=54
+Réponse de 1.1.1.1 : octets=32 temps=46 ms TTL=54
+Réponse de 1.1.1.1 : octets=32 temps=24 ms TTL=54
+```
+
+### Prouver que la connexion Internet passe bien par l'autre PC
+
+```tracert 1.1.1.1```
+
+```
+Détermination de l’itinéraire vers one.one.one.one [1.1.1.1]
+avec un maximum de 30 sauts :
+
+  1    <1 ms    <1 ms    <1 ms  10.10.10.2
+  2     8 ms     3 ms     4 ms  10.33.19.254
+  3    13 ms     6 ms     4 ms  137.149.196.77.rev.sfr.net [77.196.149.137]
+```
+On retrouve bien l'IP du PC donnant l'accès
+
+## Petit chat privé
+
+( Installation de netcat sur windows avec Edge => UN ENFER ! )
+
+Depuis netcat :
+
+```
+Cmd line: 10.10.10.2 8888
+g
+coucou
+Bonsoir !
+Miaou
+```
+
+### Visualiser la connexion en cours
+```
+TCP    10.10.10.1:63681       10.10.10.2:8888        ESTABLISHED
+[nc64.exe]
+```
+
+(Voir TP Killian)
+
+## Firewall
+
+Autoriser les Pings(s) :
+![Autoriser les Pings(s)](screens/Ping.png)
+
+
+Discuter sur netcat malgré le pare-feu actif :
+
+![Autoriser netcat sur 8888](screens/netcat.png)
+
+
+```
+Cmd line: 10.10.10.2 8888
+Bonsoir !
+! riosnoB
+```
+
+## Firewall
+
+Autoriser les Pings(s) :
+![Autoriser les Pings(s)](screens/Ping.png)
+
+
+Discuter sur netcat malgré le pare-feu actif :
+
+![Autoriser netcat sur 8888](screens/netcat.png)
+
+
+```
+Cmd line: 10.10.10.2 8888
+Bonsoir !
+! riosnoB
+```
 
 ## III. Manipulations d'autres outils/protocoles côté client
 # 1. DHCP
@@ -66,7 +144,7 @@ Configuration automatique activée. . . : Oui
 
 Adresse IPv6 de liaison locale. . . . .: fe80::8829:eb42:945a:7d14%4(préféré)
 
-**Adresse IPv4. . . . . . . . . . . . . .: 10.33.16.104(préféré)**
+Adresse IPv4. . . . . . . . . . . . . .: 10.33.16.104(préféré)
 
 Masque de sous-réseau. . . . . . . . . : 255.255.252.0
 
@@ -76,16 +154,14 @@ Masque de sous-réseau. . . . . . . . . : 255.255.252.0
 
 Passerelle par défaut. . . . . . . . . : 10.33.19.254
 
-Serveur DHCP . . . . . . . . . . . . . : 10.33.19.254
+**Serveur DHCP . . . . . . . . . . . . . : 10.33.19.254**
 
 IAID DHCPv6 . . . . . . . . . . . : 55067936
 
 DUID de client DHCPv6. . . . . . . . : 00-01-00-01-2A-8A-91-9F-A0-8C-FD-30-3E-F4
 
 Serveurs DNS. . .  . . . . . . . . . . : 8.8.8.8
-
                                        8.8.4.4
-
                                        1.1.1.1
 
 NetBIOS sur Tcpip. . . . . . . . . . . : Activé
@@ -93,10 +169,15 @@ NetBIOS sur Tcpip. . . . . . . . . . . : Activé
 
 # DNS
 🌞** Trouver l'adresse IP du serveur DNS que connaît votre ordinateur**
+
 ipconfig /all
+
 **Serveurs DNS. . .  . . . . . . . . . . : 8.8.8.8**
+
 🌞 Utiliser, en ligne de commande l'outil nslookup (Windows, MacOS) pour faire des requêtes DNS à la main
+
 PS C:\Users\Melanie> nslookup google.com
+
 Serveur :   dns.google
 Address:  8.8.8.8   ---> serveur DNS
 
@@ -130,5 +211,6 @@ Address:  8.8.8.8  ---> serveur DNS
 
 Nom :    cable-78-34-2-17.nc.de
 Address:  78.34.2.17  --> address IPv4 du serveur
+
 
 ## IV.Wireshark
