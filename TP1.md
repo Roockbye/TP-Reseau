@@ -1,4 +1,4 @@
-### TP:
+### TP1:Réseau
 ## Exploration locale en solo
 # 1. Affichage d'informations sur la pile TCP/IP locale
 $ ipconfig /all
@@ -96,12 +96,12 @@ TCP    10.10.10.1:63681       10.10.10.2:8888        ESTABLISHED
 ## Firewall
 
 Autoriser les Pings(s) :
-![Autoriser les Pings(s)](screens/Ping.png)
+![](https://i.imgur.com/Z4jMGt3.png)
 
 
 Discuter sur netcat malgré le pare-feu actif :
 
-![Autoriser netcat sur 8888](screens/netcat.png)
+![](https://i.imgur.com/9ap6Zt8.png)
 
 
 ```
@@ -196,4 +196,32 @@ Nom :    cable-78-34-2-17.nc.de
 Address:  78.34.2.17  --> address IPv4 du serveur
 
 
-## IV.Wireshark
+## IV. Wireshark
+Cliquer sur Ethernet => Unsaved packets => continuer sans enregistrer
+Ping entre moi, et ma passerelle (pc du mate ; ici Killian)
+![](https://i.imgur.com/v9JR6U0.png)
+
+Netcat entre nous :
+![](https://i.imgur.com/BwniZ8O.png)
+
+Requête DNS :
+![](https://i.imgur.com/YKOsmoY.png)
+
+Réponse :
+![](https://i.imgur.com/tjJxePT.png)
+
+
+
+
+
+
+
+
+
+🌞 Wireshark it
+
+![](https://i.imgur.com/gJ3p9nr.png)
+77.136.192.89 IP youtube
+10.33.16.104 mon IP
+Src Port:443 --> Port source (youtube)
+Dst Port :58480 --> Port de destination 
