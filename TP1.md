@@ -1,8 +1,9 @@
 # TP1: Réseau
 ## Exploration locale en solo
-# 1. Affichage d'informations sur la pile TCP/IP locale
+### 1. Affichage d'informations sur la pile TCP/IP locale
 
-🌞 Affichez les infos des cartes réseau de votre PC
+🌞 Affichez les infos des cartes réseau de votre PC:
+
 $ ipconfig /all
 
 * nom, adresse MAC et adresse IP de l'interface WiFi:
@@ -19,16 +20,19 @@ $ ipconfig /all
 ip: média deconnecté
 ```
 
-🌞 Affichez votre gateway
+🌞 Affichez votre gateway:
+
 ```ip: 10.33.19.254```
 
-🌞 Déterminer la MAC de la passerelle
+🌞 Déterminer la MAC de la passerelle:
+
 $ arp -a 10.33.19.254
 
 ```00-c0-e7-e0-04-4e```
 
 En graphique (GUI : Graphical User Interface)
-🌞 Trouvez comment afficher les informations sur une carte IP (change selon l'OS)
+
+🌞 Trouvez comment afficher les informations sur une carte IP (change selon l'OS):
 
 msconfig32 > Composants > Réseau > Carte
 
@@ -44,7 +48,7 @@ Passerelle IP par défaut	10.33.19.254
 
 ## 2. Modifications des informations
 
-# A. Modification d'adresse IP (part 1)
+### A. Modification d'adresse IP (part 1)
 
 panneau config > Connections reseau et internet > Centre Reseau et partage > Modifier les paramètres de la carte > wifi (propriétés) > protocole internet version 4 (TCP/Ipv4) > Propriétés
 
@@ -52,7 +56,7 @@ panneau config > Connections reseau et internet > Centre Reseau et partage > Mod
 
 ## Exploration locale en duo
 
-# 3. Modification d'adresse IP
+### 3. Modification d'adresse IP
 
 🌞 Modifiez l'IP des deux machines pour qu'elles soient dans le même réseau:
 
@@ -82,11 +86,11 @@ arp -a 10.10.10.2
 
 je n'ai pas pu faire la suite car port RJ45 cassé (suite partie à 2, compte-rendue de Killian et Mathieu)
 
-# 4. Utilisation d'un des deux comme gateway
+### 4. Utilisation d'un des deux comme gateway
 
-🌞Tester l'accès internet
+🌞Tester l'accès internet:
 
-```ping 1.1.1.1```
+ping 1.1.1.1
 
 ```
 Envoi d’une requête 'Ping'  1.1.1.1 avec 32 octets de données :
@@ -96,9 +100,9 @@ Réponse de 1.1.1.1 : octets=32 temps=46 ms TTL=54
 Réponse de 1.1.1.1 : octets=32 temps=24 ms TTL=54
 ```
 
-### Prouver que la connexion Internet passe bien par l'autre PC
+ Prouver que la connexion Internet passe bien par l'autre PC
 
-```tracert 1.1.1.1```
+tracert 1.1.1.1
 
 ```
 Détermination de l’itinéraire vers one.one.one.one [1.1.1.1]
@@ -110,9 +114,7 @@ avec un maximum de 30 sauts :
 ```
 On retrouve bien l'IP du PC donnant l'accès
 
-## Petit chat privé
-
-( Installation de netcat sur windows avec Edge => UN ENFER ! )
+## 5.Petit chat privé
 
 Depuis netcat :
 
@@ -124,7 +126,8 @@ Bonsoir !
 Miaou
 ```
 
-### Visualiser la connexion en cours
+🌞 Visualiser la connexion en cours:
+
 ```
 TCP    10.10.10.1:63681       10.10.10.2:8888        ESTABLISHED
 [nc64.exe]
@@ -132,9 +135,10 @@ TCP    10.10.10.1:63681       10.10.10.2:8888        ESTABLISHED
 
 (Voir TP Killian)
 
-## Firewall
+## 6.Firewall
 
 Autoriser les Pings(s) :
+
 ![](https://i.imgur.com/Z4jMGt3.png)
 
 
@@ -154,7 +158,7 @@ Bonsoir !
 
 $ipconfig / all
 
-```
+
 Carte réseau sans fil Wi-Fi :
 
 Suffixe DNS propre à la connexion. . . :
@@ -190,16 +194,17 @@ Serveurs DNS. . .  . . . . . . . . . . : 8.8.8.8
                                        1.1.1.1
 
 NetBIOS sur Tcpip. . . . . . . . . . . : Activé
-```
 
-# DNS
-🌞** Trouver l'adresse IP du serveur DNS que connaît votre ordinateur**
+
+## DNS
+
+🌞Trouver l'adresse IP du serveur DNS que connaît votre ordinateur:
 
 ipconfig /all
 
 **Serveurs DNS : 8.8.8.8**
 
-🌞 Utiliser, en ligne de commande l'outil nslookup (Windows, MacOS) pour faire des requêtes DNS à la main
+🌞 Utiliser, en ligne de commande l'outil nslookup (Windows, MacOS) pour faire des requêtes DNS à la main:
 
 ```
 PS C:\Users\Melanie> nslookup google.com
@@ -258,7 +263,7 @@ Requête DNS :
 Réponse :
 ![](https://i.imgur.com/tjJxePT.png)
 
-🌞 Wireshark it
+🌞 Wireshark it:
 
 ![](https://i.imgur.com/gJ3p9nr.png)
 77.136.192.89 IP youtube
