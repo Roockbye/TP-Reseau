@@ -54,21 +54,64 @@ je n'ai pas pu faire la suite car port RJ45 cassé (suite partie à 2, compte-re
 ipconfig / all
 Carte réseau sans fil Wi-Fi :
 
-   Suffixe DNS propre à la connexion. . . :
-   Description. . . . . . . . . . . . . . : Intel(R) Dual Band Wireless-AC 7265
-   Adresse physique . . . . . . . . . . . : 48-45-20-E8-FE-22
-   DHCP activé. . . . . . . . . . . . . . : Oui
-   Configuration automatique activée. . . : Oui
-   Adresse IPv6 de liaison locale. . . . .: fe80::8829:eb42:945a:7d14%4(préféré)
-  <u> Adresse IPv4. . . . . . . . . . . . . .: 10.33.16.104(préféré)
-   Masque de sous-réseau. . . . . . . . . : 255.255.252.0
-  <u> Bail obtenu. . . . . . . . . . . . . . : mercredi 5 octobre 2022 08:48:19
-  <u> Bail expirant. . . . . . . . . . . . . : jeudi 6 octobre 2022 08:45:36
-   Passerelle par défaut. . . . . . . . . : 10.33.19.254
-   Serveur DHCP . . . . . . . . . . . . . : 10.33.19.254
-   IAID DHCPv6 . . . . . . . . . . . : 55067936
-   DUID de client DHCPv6. . . . . . . . : 00-01-00-01-2A-8A-91-9F-A0-8C-FD-30-3E-F4
-   Serveurs DNS. . .  . . . . . . . . . . : 8.8.8.8
+Suffixe DNS propre à la connexion. . . :
+Description. . . . . . . . . . . . . . : Intel(R) Dual Band Wireless-AC 7265
+Adresse physique . . . . . . . . . . . : 48-45-20-E8-FE-22
+DHCP activé. . . . . . . . . . . . . . : Oui
+Configuration automatique activée. . . : Oui
+Adresse IPv6 de liaison locale. . . . .: fe80::8829:eb42:945a:7d14%4(préféré)
+**Adresse IPv4. . . . . . . . . . . . . .: 10.33.16.104(préféré)**
+Masque de sous-réseau. . . . . . . . . : 255.255.252.0
+**Bail obtenu. . . . . . . . . . . . . . : mercredi 5 octobre 2022 08:48:19**
+**Bail expirant. . . . . . . . . . . . . : jeudi 6 octobre 2022 08:45:36**
+Passerelle par défaut. . . . . . . . . : 10.33.19.254
+Serveur DHCP . . . . . . . . . . . . . : 10.33.19.254
+IAID DHCPv6 . . . . . . . . . . . : 55067936
+DUID de client DHCPv6. . . . . . . . : 00-01-00-01-2A-8A-91-9F-A0-8C-FD-30-3E-F4
+Serveurs DNS. . .  . . . . . . . . . . : 8.8.8.8
                                        8.8.4.4
                                        1.1.1.1
-   NetBIOS sur Tcpip. . . . . . . . . . . : Activé
+NetBIOS sur Tcpip. . . . . . . . . . . : Activé
+
+# DNS
+🌞** Trouver l'adresse IP du serveur DNS que connaît votre ordinateur**
+ipconfig /all
+**Serveurs DNS. . .  . . . . . . . . . . : 8.8.8.8**
+🌞 Utiliser, en ligne de commande l'outil nslookup (Windows, MacOS) pour faire des requêtes DNS à la main
+PS C:\Users\Melanie> nslookup google.com
+Serveur :   dns.google
+Address:  8.8.8.8   ---> serveur DNS
+
+Réponse ne faisant pas autorité :
+Nom :    google.com
+Addresses:  2a00:1450:4007:819::200e  --> l'IPv6 address du serveur
+          142.250.178.142    -- > IPv4 address du serveur
+
+PS C:\Users\Melanie> nslookup ynov.com
+Serveur :   dns.google
+Address:  8.8.8.8  ---> serveur DNS
+
+Réponse ne faisant pas autorité :
+Nom :    ynov.com
+Addresses:  2606:4700:20::681a:be9
+          2606:4700:20::ac43:4ae2
+          2606:4700:20::681a:ae9
+          104.26.11.233
+          104.26.10.233
+          172.67.74.226
+---> plusieurs address IPv4 et IPv6 car un site web peut faire appel à des services hébergés sur d'autres serveurs(comme une base de données) ou voir son contenu réparti sur différents serveurs web pour des raisons de performance
+
+PS C:\Users\Melanie> nslookup 231.34.113.12
+Serveur :   dns.google
+Address:  8.8.8.8
+
+dns.google ne parvient pas à trouver 231.34.113.12 : Non-existent domain  --> serveur non accessible
+PS C:\Users\Melanie> nslookup 78.34.2.17
+Serveur :   dns.google
+Address:  8.8.8.8  ---> serveur DNS
+
+Nom :    cable-78-34-2-17.nc.de
+Address:  78.34.2.17  --> address IPv4 du serveur
+
+## IV.Wireshark
+![](https://i.imgur.com/key4FC4.png)
