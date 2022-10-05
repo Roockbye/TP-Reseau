@@ -110,23 +110,6 @@ Bonsoir !
 ! riosnoB
 ```
 
-## Firewall
-
-Autoriser les Pings(s) :
-![Autoriser les Pings(s)](screens/Ping.png)
-
-
-Discuter sur netcat malgré le pare-feu actif :
-
-![Autoriser netcat sur 8888](screens/netcat.png)
-
-
-```
-Cmd line: 10.10.10.2 8888
-Bonsoir !
-! riosnoB
-```
-
 ## III. Manipulations d'autres outils/protocoles côté client
 # 1. DHCP
 ipconfig / all
