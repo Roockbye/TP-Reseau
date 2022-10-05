@@ -55,23 +55,41 @@ ipconfig / all
 Carte réseau sans fil Wi-Fi :
 
 Suffixe DNS propre à la connexion. . . :
+
 Description. . . . . . . . . . . . . . : Intel(R) Dual Band Wireless-AC 7265
+
 Adresse physique . . . . . . . . . . . : 48-45-20-E8-FE-22
+
 DHCP activé. . . . . . . . . . . . . . : Oui
+
 Configuration automatique activée. . . : Oui
+
 Adresse IPv6 de liaison locale. . . . .: fe80::8829:eb42:945a:7d14%4(préféré)
+
 **Adresse IPv4. . . . . . . . . . . . . .: 10.33.16.104(préféré)**
+
 Masque de sous-réseau. . . . . . . . . : 255.255.252.0
+
 **Bail obtenu. . . . . . . . . . . . . . : mercredi 5 octobre 2022 08:48:19**
+
 **Bail expirant. . . . . . . . . . . . . : jeudi 6 octobre 2022 08:45:36**
+
 Passerelle par défaut. . . . . . . . . : 10.33.19.254
+
 Serveur DHCP . . . . . . . . . . . . . : 10.33.19.254
+
 IAID DHCPv6 . . . . . . . . . . . : 55067936
+
 DUID de client DHCPv6. . . . . . . . : 00-01-00-01-2A-8A-91-9F-A0-8C-FD-30-3E-F4
+
 Serveurs DNS. . .  . . . . . . . . . . : 8.8.8.8
+
                                        8.8.4.4
+
                                        1.1.1.1
+
 NetBIOS sur Tcpip. . . . . . . . . . . : Activé
+
 
 # DNS
 🌞** Trouver l'adresse IP du serveur DNS que connaît votre ordinateur**
@@ -114,4 +132,3 @@ Nom :    cable-78-34-2-17.nc.de
 Address:  78.34.2.17  --> address IPv4 du serveur
 
 ## IV.Wireshark
-![](https://i.imgur.com/key4FC4.png)
