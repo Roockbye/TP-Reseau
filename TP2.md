@@ -1,10 +1,10 @@
-*** I.Setup IP
+# I.Setup IP
+---
+### 🌞 _Mettez en place une configuration réseau fonctionnelle entre les deux machines:_
 
-🌞 Mettez en place une configuration réseau fonctionnelle entre les deux machines:
+ ``` netsh interface ip show config ```
 
- /// netsh interface ip show config ///
-
-///
+```
 Configuration pour l'interface « Ethernet »
     DHCP activé:                          Oui
     Adresse IP :                           169.254.130.255
@@ -58,18 +58,18 @@ Configuration pour l'interface « Loopback Pseudo-Interface 1 »
     Serveurs DNS configurés statiquement : Aucun
     Enregistrer avec le suffixe :           Principale uniquement
     Serveurs WINS configurés statiquement : Aucun
-///
+```
 
-///
+```
 PS C:\Windows\system32> netsh interface ip set address "Ethernet" dhcp
 DHCP est déjà activé sur cette interface.
-///
+```
 
-///
+```
 PS C:\Windows\system32> netsh interface ip set address name= "Ethernet" static 10.24.19.254 255.255.252.0      
-///
+```
 
-///
+```
 PS C:\Windows\system32> ipconfig
 
 Configuration IP de Windows
@@ -108,7 +108,7 @@ Carte réseau sans fil Wi-Fi :
    Adresse IPv4. . . . . . . . . . . . . .: 10.33.17.54
    Masque de sous-réseau. . . . . . . . . : 255.255.252.0
    Passerelle par défaut. . . . . . . . . : 10.33.19.254
-///
+```
 
 L'IP à bien été modifié (youpi)
 mon ip choisi : 10.24.19.254 (masque: 255.255.255.0)
@@ -119,7 +119,7 @@ l'adresse de broadcast: 10.24.19.255
 
 ** Prouvez que la connexion est fonctionnelle entre les deux machines:
 
-///
+```
 PS C:\Windows\system32> ping 10.24.16.3
 
 Envoi d’une requête 'Ping'  10.24.16.3 avec 32 octets de données :
@@ -132,17 +132,17 @@ Statistiques Ping pour 10.24.16.3:
     Paquets : envoyés = 4, reçus = 4, perdus = 0 (perte 0%),
 Durée approximative des boucles en millisecondes :
     Minimum = 1ms, Maximum = 1ms, Moyenne = 1ms
-///
+```
 
-🌞 Wireshark it:
+### 🌞_Wireshark it:_
 
-voir packets ICMP
+voir packets ICMP [ici](./TP2/packets%20ICMP.pcapng)
 
-*** II. ARP my bro
+# II. ARP my bro
+---
+### 🌞 _Check the ARP table:_
 
-🌞 Check the ARP table:
-
-///
+```
 PS C:\Windows\system32> arp -a
 
 Interface : 192.168.56.1 --- 0x7
@@ -177,37 +177,55 @@ Interface : 10.33.17.54 --- 0xf
   224.0.0.252           01-00-5e-00-00-fc     statique
   239.255.255.250       01-00-5e-7f-ff-fa     statique
   255.255.255.255       ff-ff-ff-ff-ff-ff     statique
-///
+```
 
 mon MAC : 00-26-b9-11-ed-dc
 l'addresse MAC de Mathieu 10.33.16.3 est 88-a4-c2-9c-99-84
 
-🌞déterminez la MAC de la gateway de votre réseau (celle du réseau Wifi YNOV):
+
+### 🌞 _déterminez la MAC de la gateway de votre réseau (celle du réseau Wifi YNOV):_
+
 
 Interface : 10.33.17.54 --- 0xf
+
   Adresse Internet      Adresse physique      Type
+
   10.33.16.31           48-45-20-d6-79-6e     dynamique
+
   10.33.17.163          f0-6e-0b-d5-8f-f0     dynamique
+
   10.33.17.197          74-e5-f9-17-17-2c     dynamique
+
   10.33.18.103          48-a4-72-b7-37-7f     dynamique
+
   10.33.18.221          78-4f-43-87-f5-11     dynamique
-  *10.33.19.254          00-c0-e7-e0-04-4e     dynamique*
+
+  **10.33.19.254          00-c0-e7-e0-04-4e     dynamique**
+
   10.33.19.255          ff-ff-ff-ff-ff-ff     statique
+
   224.0.0.22            01-00-5e-00-00-16     statique
+
   224.0.0.251           01-00-5e-00-00-fb     statique
+
   224.0.0.252           01-00-5e-00-00-fc     statique
+
   239.255.255.250       01-00-5e-7f-ff-fa     statique
+
   255.255.255.255       ff-ff-ff-ff-ff-ff     statique
 
 
-🌞 Manipuler la table ARP:
 
-///
+### 🌞 _Manipuler la table ARP:_
+
+```
 PS C:\Windows\system32> netsh interface IP delete arpcache
 Ok.
-///
+```
 
-///
+Après plusieurs ping la tablee ARP se re-remplit doucement
+
+```
 PS C:\Windows\system32> arp -a
 
 Interface : 192.168.56.1 --- 0x7
@@ -226,5 +244,42 @@ Interface : 10.33.17.54 --- 0xf
   10.33.19.254          00-c0-e7-e0-04-4e     dynamique
   10.33.19.255          ff-ff-ff-ff-ff-ff     statique
   224.0.0.22            01-00-5e-00-00-16     statique
-///
-🌞 Wireshark it
+```
+
+### 🌞 _Wireshark it:_
+
+voir trames ARP [ici](./TP2/trames%20ARP.pcapng) 
+
+
+1ère ligne: demande à qui appartient l'IP 10.24.16.3 à l'addresse broadcast 
+2ème ligne: réponse --> envoie de l'addresse mac de l'IP demandé
+
+# III. DHCP you too my brooo
+---
+### 🌞 _Wireshark it:_
+
+ ```netsh interface ip set address name= "Wi-Fi" static 99.25.17.4 255.255.255.0```
+
+ ```netsh interface ip set address name= "Wi-Fi" dhcp```
+
+voir dora [ici](./TP2/%C3%A9change%20dora.pcapng)
+
+ * Les 4 trames dora:
+
+ DHCP Discover --> Src: HonHaiPr_3b:6d:0b (90:4c:e5:3b:6d:0b), Dst: Broadcast (ff:ff:ff:ff:ff:ff)
+
+ DHCP Offer --> Src: Fiberdat_e0:04:4e (00:c0:e7:e0:04:4e), Dst: HonHaiPr_3b:6d:0b (90:4c:e5:3b:6d:0b)
+
+ DHCP Request --> Src: HonHaiPr_3b:6d:0b (90:4c:e5:3b:6d:0b), Dst: Broadcast (ff:ff:ff:ff:ff:ff)
+
+ DHCP ACK --> Src: Fiberdat_e0:04:4e (00:c0:e7:e0:04:4e), Dst: HonHaiPr_3b:6d:0b (90:4c:e5:3b:6d:0b)
+
+
+Dans le DHCP Offer il propose les 3 infos:
+
+ * IP à utiliser--> your(client) IP : 10.33.17.54
+
+ * addresse IP de la passerelle du réseau --> Routeur: 10.33.19.254
+
+ * l'addresse d'un réseau DNS joinable depuis ce réseau -->  Domain Name Server: 8.8.8.8/ 8.8.4.4/ 1.1.1.1
+
