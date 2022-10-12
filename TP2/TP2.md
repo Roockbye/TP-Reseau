@@ -117,7 +117,7 @@ l'ip choisi de Mathieu: 10.24.16.3 (masque: 255.255.252.0)
 addresse de réseau: 10.24.16.0
 l'adresse de broadcast: 10.24.19.255
 
-** Prouvez que la connexion est fonctionnelle entre les deux machines:
+* Prouvez que la connexion est fonctionnelle entre les deux machines:
 
 ```
 PS C:\Windows\system32> ping 10.24.16.3
