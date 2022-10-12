@@ -8,7 +8,7 @@ Nous avons obtenue les autres infos grace à sipcalc:
 addresse de réseau: 10.24.16.0
 l'adresse de broadcast: 10.24.19.255
 
-commande utiliser pour afficher les paramètres de configuration TCP/Ip acttuels du système -->
+commande utiliser pour afficher les paramètres de configuration TCP/IP actuels du système -->
 
  ``` netsh interface ip show config ```
 
@@ -142,7 +142,7 @@ Durée approximative des boucles en millisecondes :
 ```
 ping réussie !
 
-### 🌞_Wireshark it:_
+### 🌞 _Wireshark it:_
 
 voir packets ICMP [ici](./TP2/packets%20ICMP.pcapng)
 
@@ -192,6 +192,7 @@ Interface : 10.33.17.54 --- 0xf
 ```
 
 mon MAC : 00-26-b9-11-ed-dc
+
 l'addresse MAC de Mathieu PC2: 88-a4-c2-9c-99-84
 
 
@@ -199,6 +200,7 @@ l'addresse MAC de Mathieu PC2: 88-a4-c2-9c-99-84
 
 on détermine l'IP de la gateway pour on retrouve le mac correspondant sur la table arp
 
+```
 Interface : 10.33.17.54 --- 0xf
 
   Adresse Internet      Adresse physique      Type
@@ -226,8 +228,7 @@ Interface : 10.33.17.54 --- 0xf
   239.255.255.250       01-00-5e-7f-ff-fa     statique
 
   255.255.255.255       ff-ff-ff-ff-ff-ff     statique
-
-
+```
 
 ### 🌞 _Manipuler la table ARP:_
 
@@ -269,18 +270,23 @@ voir trames ARP [ici](./TP2/trames%20ARP.pcapng)
 1ère ligne: demande à qui appartient l'IP 10.24.16.3 à l'addresse broadcast
 
 source:dell(moi) Sender IP address: 10.24.19.254
+
 Sender MAC address: Dell_11:ed:dc (00:26:b9:11:ed:dc)
 
 destination : (mathieu)Target IP address: 10.24.16.3
+
 Target MAC address: LCFCHefe_9c:99:84 (88:a4:c2:9c:99:84)
 
 2ème ligne: réponse --> envoie de l'addresse mac de l'IP demandé
 
 source:Sender IP address: 10.24.16.3
+
 Sender MAC address: LCFCHefe_9c:99:84 (88:a4:c2:9c:99:84)
 
 destination: Target IP address: 10.24.19.254
+
 Target MAC address: Dell_11:ed:dc (00:26:b9:11:ed:dc)
+
 
 # III. DHCP you too my brooo
 ---
