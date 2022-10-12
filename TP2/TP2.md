@@ -3,9 +3,13 @@
 ### 🌞 _Mettez en place une configuration réseau fonctionnelle entre les deux machines:_
 
 Mon ip choisi : 10.24.19.254 (masque: 255.255.255.0)
+
 l'ip choisi de Mathieu: 10.24.16.3 (masque: 255.255.252.0)
+
 Nous avons obtenue les autres infos grace à sipcalc:
+
 addresse de réseau: 10.24.16.0
+
 l'adresse de broadcast: 10.24.19.255
 
 commande utiliser pour afficher les paramètres de configuration TCP/IP actuels du système -->
