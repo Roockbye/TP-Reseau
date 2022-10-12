@@ -2,7 +2,17 @@
 ---
 ### 🌞 _Mettez en place une configuration réseau fonctionnelle entre les deux machines:_
 
+Mon ip choisi : 10.24.19.254 (masque: 255.255.255.0)
+l'ip choisi de Mathieu: 10.24.16.3 (masque: 255.255.252.0)
+Nous avons obtenue les autres infos grace à sipcalc:
+addresse de réseau: 10.24.16.0
+l'adresse de broadcast: 10.24.19.255
+
+commande utiliser pour afficher les paramètres de configuration TCP/Ip acttuels du système -->
+
  ``` netsh interface ip show config ```
+
+résultat -->
 
 ```
 Configuration pour l'interface « Ethernet »
@@ -64,10 +74,11 @@ Configuration pour l'interface « Loopback Pseudo-Interface 1 »
 PS C:\Windows\system32> netsh interface ip set address "Ethernet" dhcp
 DHCP est déjà activé sur cette interface.
 ```
-
+commande pour modifier mon adresse IP Ethernet ainsi que le masque de sous-réseau  -->
 ```
 PS C:\Windows\system32> netsh interface ip set address name= "Ethernet" static 10.24.19.254 255.255.252.0      
 ```
+commande pour constater les changements effectué -->
 
 ```
 PS C:\Windows\system32> ipconfig
@@ -111,13 +122,9 @@ Carte réseau sans fil Wi-Fi :
 ```
 
 L'IP à bien été modifié (youpi)
-mon ip choisi : 10.24.19.254 (masque: 255.255.255.0)
-l'ip choisi de Mathieu: 10.24.16.3 (masque: 255.255.252.0)
-(sipcalc)
-addresse de réseau: 10.24.16.0
-l'adresse de broadcast: 10.24.19.255
 
-* Prouvez que la connexion est fonctionnelle entre les deux machines:
+
+* Prouvez que la connexion est fonctionnelle entre les deux machines:(on ping)
 
 ```
 PS C:\Windows\system32> ping 10.24.16.3
@@ -133,14 +140,19 @@ Statistiques Ping pour 10.24.16.3:
 Durée approximative des boucles en millisecondes :
     Minimum = 1ms, Maximum = 1ms, Moyenne = 1ms
 ```
+ping réussie !
 
 ### 🌞_Wireshark it:_
 
 voir packets ICMP [ici](./TP2/packets%20ICMP.pcapng)
 
+Nous avons un ICMP qui est un "Echo request" de type 8 (Type: 8 (Echo (ping) request)) auquel le destinataire répond après réception du message avec un paquet de données contenant l'entrée ICMP "Echo Reply" de type 0 (Type: 0 (Echo (ping) reply))
+
 # II. ARP my bro
 ---
 ### 🌞 _Check the ARP table:_
+
+commande pour afficher table ARP de PC2-->
 
 ```
 PS C:\Windows\system32> arp -a
@@ -180,11 +192,12 @@ Interface : 10.33.17.54 --- 0xf
 ```
 
 mon MAC : 00-26-b9-11-ed-dc
-l'addresse MAC de Mathieu 10.33.16.3 est 88-a4-c2-9c-99-84
+l'addresse MAC de Mathieu PC2: 88-a4-c2-9c-99-84
 
 
 ### 🌞 _déterminez la MAC de la gateway de votre réseau (celle du réseau Wifi YNOV):_
 
+on détermine l'IP de la gateway pour on retrouve le mac correspondant sur la table arp
 
 Interface : 10.33.17.54 --- 0xf
 
@@ -217,6 +230,8 @@ Interface : 10.33.17.54 --- 0xf
 
 
 ### 🌞 _Manipuler la table ARP:_
+
+commande pour effacer table ARP -->
 
 ```
 PS C:\Windows\system32> netsh interface IP delete arpcache
@@ -251,12 +266,27 @@ Interface : 10.33.17.54 --- 0xf
 voir trames ARP [ici](./TP2/trames%20ARP.pcapng) 
 
 
-1ère ligne: demande à qui appartient l'IP 10.24.16.3 à l'addresse broadcast 
+1ère ligne: demande à qui appartient l'IP 10.24.16.3 à l'addresse broadcast
+
+source:dell(moi) Sender IP address: 10.24.19.254
+Sender MAC address: Dell_11:ed:dc (00:26:b9:11:ed:dc)
+
+destination : (mathieu)Target IP address: 10.24.16.3
+Target MAC address: LCFCHefe_9c:99:84 (88:a4:c2:9c:99:84)
+
 2ème ligne: réponse --> envoie de l'addresse mac de l'IP demandé
+
+source:Sender IP address: 10.24.16.3
+Sender MAC address: LCFCHefe_9c:99:84 (88:a4:c2:9c:99:84)
+
+destination: Target IP address: 10.24.19.254
+Target MAC address: Dell_11:ed:dc (00:26:b9:11:ed:dc)
 
 # III. DHCP you too my brooo
 ---
 ### 🌞 _Wireshark it:_
+
+On doit forcer un échange DHCP car il ne se produit qu'à la première connexion
 
  ```netsh interface ip set address name= "Wi-Fi" static 99.25.17.4 255.255.255.0```
 
