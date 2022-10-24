@@ -238,3 +238,14 @@ voir capture [ici](./tp3_routage_marcel.pcap)
 3. Accès internet
 🌞Donnez un accès internet à vos machines
 
+ajoutez une carte NAT en 3ème inteface sur le router pour qu'il ait un accès internet
+
+ajouter une route par défaut (temporairement) depuis john :
+
+
+    sudo ip route add default via 10.3.1.254 dev enp0s8 pour John (10.3.1.11) sudo ip route add default via 10.3.2.254 dev enp0s8 pour Marcel (10.3.2.12)
+
+    ping 8.8.8.8 
+
+    10.0.5.15
+
