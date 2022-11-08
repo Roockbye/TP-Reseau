@@ -88,9 +88,9 @@ Sur VM:
 State   Recv-Q   Send-Q     Local Address:Port     Peer Address:Port   Process
 ESTAB   0        36             10.4.1.11:22           10.4.1.1:52038
 ```
-🦈
+🦈[3way_handshakes](./3way_handshakes.pcapng)
 
-(je n'ai pas récupérer mes anciennes VMs et mes captures whiresharks de mon ancien ordi)
+(la MAC est différente car j'ai voulu refaire une capture whireshark mieux sur mon nouvel ordi)
 # III. DNS
 
 ### 2. Setup
@@ -406,4 +406,4 @@ Address: 10.4.1.11
 ```
 🦈 
 
-(J'ai oublié de récupérer ma capture sur mon ancien ordi)
+(Je n'ai pas récupérer mes anciennes VMs, ni cette capture de mon ancien ordi)
