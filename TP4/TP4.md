@@ -1,7 +1,7 @@
 # TP4 : TCP, UDP et services réseau
 
 ## I. First steps
-Faites-vous un petit top 5 des applications que vous utilisez sur votre PC souvent, des applications qui utilisent le réseau : un site que vous visitez souvent, un jeu en ligne, Spotify, j'sais po moi, n'importe.
+Top 5 des applications:
 (discord, Spotify, github, Microsoft Teams, App météo )
 
 
@@ -66,19 +66,11 @@ Port local: 53976
 ### 1. SSH
 
 
-- [x] Créer la machine (avec une carte host-only)
-- [x] Définir une IP statique à la VM
-- [x] Donner un hostname à la machine
-- [x] Vérifier que l'accès SSH fonctionnel
-- [x] Vérifier que le firewall est actif
-- [x] Remplir votre fichier `hosts`, celui de votre PC, pour accéder au VM avec un nom
-- [ ] Dès que le routeur est en place, n'oubliez pas d'ajouter une route par défaut aux autres VM pour qu'elles aient internet
-
 🌞 __Examinez le trafic dans Wireshark:__
 
 La connexion SSH est en TCP et pas UDP car TCP est lent mais fiable et UDP rapide mais non fiable. Et pour une connexion SSH on préfère avoir une connection fiable malgré qu'elle soit lente.
 
-connexion [SSH](./3way_handshakes.pcapng)
+
 
 🌞 __Demandez aux OS:__
 
@@ -96,7 +88,9 @@ Sur VM:
 State   Recv-Q   Send-Q     Local Address:Port     Peer Address:Port   Process
 ESTAB   0        36             10.4.1.11:22           10.4.1.1:52038
 ```
+🦈
 
+(je n'ai pas récupérer mes anciennes VMs et mes captures whiresharks de mon ancien ordi)
 # III. DNS
 
 ### 2. Setup
@@ -410,5 +404,6 @@ Address:        10.4.1.201#53
 Name:   node1.tp4.b1
 Address: 10.4.1.11
 ```
+🦈 
 
-🦈[DNS](./DNS.pcapng)
+(J'ai oublié de récupérer ma capture sur mon ancien ordi)
