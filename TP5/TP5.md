@@ -405,7 +405,37 @@ rtt min/avg/max/mdev = 18.687/25.700/36.678/6.731 ms
 
 ### 🌞 __Ajoutez le noeud Cloud à la topo__
 
+côté routeur, il faudra récupérer un IP en DHCP (voir le mémo Cisco)
+
+vous devriez pouvoir ping 1.1.1.1
+
+```(config-if)# ip address dhcp```
 
 
+### 🌞 __Configurez le NAT__
+voir mémo cisco NAT
 
+```
+R1#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+R1(config)#interface fastEthernet 1/0
+R1(config-if)#ip nat outside
+R1(config-if)#interface fastEthernet 0/0
+R1(config-if)#ip nat inside
+R1(config-if)#exit
+R1(config)#access-list 1 permit any
+R1(config)#ip nat inside source list 1 interface fastEthernet 1/0 overload
+R1(config)#exit
+```
+
+### 🌞 __Test__
+
+
+# V. Add a building
+
+## 3. Setup topologie 5
+
+### 🌞  __Vous devez me rendre le show running-config de tous les équipements__
+
+.route par défault déjà ajouté (voir plus haut)
 
