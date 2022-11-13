@@ -71,7 +71,6 @@ Port local: 53976
 La connexion SSH est en TCP et pas UDP car TCP est lent mais fiable et UDP rapide mais non fiable. Et pour une connexion SSH on préfère avoir une connection fiable malgré qu'elle soit lente.
 
 
-
 🌞 __Demandez aux OS:__
 
 ```netstat -nb```  sur windows
