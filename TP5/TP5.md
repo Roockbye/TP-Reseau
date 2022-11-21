@@ -327,6 +327,23 @@ R1(config-subif)#exit
 ```
 
 ```
+
+sw1#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+sw1(config)#interface Ethernet0/0
+sw1(config-if)#switchport trunk encapsulation dot1q
+sw1(config-if)#switchport trunk allowed vlan 10,20,30
+sw1(config-if)#switchport mode trunk
+sw1(config-if)#exit
+sw1(config)#
+*Nov 20 16:12:36.645: %LINEPROTO-5-UPDOWN: Line protocol on Interface Ethernet0/0, changed state to down
+sw1(config)#exit
+*Nov 20 16:12:39.657: %LINEPROTO-5-UPDOWN: Line protocol on Interface Ethernet0/0, changed state to up
+sw1(config)#exit
+sw1#
+```
+
+```
 PC1> ip 10.5.10.1/24 10.5.10.254
 Checking for duplicate address...
 PC1 : 10.5.10.1 255.255.255.0 gateway 10.5.10.254
@@ -340,7 +357,7 @@ PC2 : 10.5.10.2 255.255.255.0 gateway 10.5.10.254
 
 ```
 adm1>
-adm1> ip 10.5.10.2/24 10.5.10.254
+adm1> ip 10.5.20.1/24 10.5.10.254
 Checking for duplicate address...
 adm1 : 10.5.10.2 255.255.255.0 gateway 10.5.10.254
 ```
@@ -410,6 +427,9 @@ côté routeur, il faudra récupérer un IP en DHCP (voir le mémo Cisco)
 vous devriez pouvoir ping 1.1.1.1
 
 ```(config-if)# ip address dhcp```
+
+```
+
 
 
 ### 🌞 __Configurez le NAT__
