@@ -146,7 +146,6 @@ Discuter sur netcat malgré le pare-feu actif :
 
 ![](https://i.imgur.com/9ap6Zt8.png)
 
-
 ```
 Cmd line: 10.10.10.2 8888
 Bonsoir !
